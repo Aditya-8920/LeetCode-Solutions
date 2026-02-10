@@ -6,21 +6,21 @@ public:
 
         int start= 0;
         int end= row*col -1;
-        int mid= start + (end-start)/2;
+        int mid= start+(end- start)/2;
 
         while(start<= end){
             int element= matrix[mid/col][mid%col];//taking out  element at mid index out of 2d array by finding its row and columns using mid/col and mid%col
 
-            if (element== target){
+            if(element== target){
                 return 1;
             }
-            if (element < target){
-                start= mid+ 1;
+            else if(element< target){
+            start= mid+ 1;
             }
             else{
                 end= mid- 1;
             }
-            mid= start + (end-start)/2;
+            mid= start+(end- start)/2;
         }
         return 0;
     }
