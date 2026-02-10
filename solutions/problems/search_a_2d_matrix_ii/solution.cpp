@@ -4,12 +4,11 @@ public:
         int row= matrix.size();
         int col= matrix[0].size();
 
-        int rowIndex= 0;
-        int colIndex= col-1;
+        int rowIndex= 0;//jahaan se start karna hai
+        int colIndex= col-1;//jahaan se start karna hai
 
         while(rowIndex< row && colIndex>= 0){
-            int element= matrix[rowIndex][colIndex];
-
+            int element= matrix[rowIndex][colIndex];//top right corner wala element
             if(element== target){
                 return 1;
             }
