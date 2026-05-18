@@ -11,18 +11,15 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        if(head== NULL){
-            return head;
-        }
         ListNode* curr= head;
-        while(curr!= NULL){
-            if((curr->next!= NULL) && (curr->val == curr->next->val)){//Duplicate Found
-                ListNode* next_next= curr->next->next;//Pointer banaya
+        while(curr != NULL && curr->next != NULL){
+            if(curr->val == curr->next->val ){
+                ListNode* next_next= curr->next->next;
                 ListNode* nodeToDelete= curr->next;
                 delete(nodeToDelete);
                 curr->next= next_next;
             }
-            else{//Equal Nahi hai wala case
+            else{
                 curr= curr->next;
             }
         }
