@@ -1,18 +1,19 @@
 class Solution {
 public:
 
-    vector<int>nextSmallerElement(vector<int> arr, int n){
+    vector<int> nextSmallerElement(vector<int>& arr, int n){
         stack<int> s;
         s.push(-1);
-
+        
         vector<int> ans(n);
 
         for(int i= n-1; i>= 0; i--){
+            
             int curr= arr[i];
-            while(s.top() != -1 && arr[s.top()] >= curr){//jab tak chota element nhi mil jaata stack ke andar
+            while(s.top()!= -1 && arr[s.top()] >= curr){//jab tak chota element nhi mil jaata stack ke andar
                 s.pop();
-
             }
+
             //ab chota element hoga stack ke top pe-> which is our answer
             ans[i]= s.top();
             s.push(i);
@@ -20,18 +21,19 @@ public:
         return ans;
     }
 
-    vector<int>prevSmallerElement(vector<int> arr, int n){
+    vector<int> prevSmallerElement(vector<int>& arr, int n){
         stack<int> s;
         s.push(-1);
-
+        
         vector<int> ans(n);
 
         for(int i= 0; i< n; i++){
+            
             int curr= arr[i];
-            while(s.top() != -1 && arr[s.top()] >= curr){//jab tak chota element nhi mil jaata stack ke andar
+            while(s.top()!= -1 && arr[s.top()] >= curr){//jab tak chota element nhi mil jaata stack ke andar
                 s.pop();
-
             }
+
             //ab chota element hoga stack ke top pe-> which is our answer
             ans[i]= s.top();
             s.push(i);
@@ -40,33 +42,29 @@ public:
     }
 
 
-
-
-
     int largestRectangleArea(vector<int>& heights) {
-
+        
         int n= heights.size();
+        vector<int> next;
+        next= nextSmallerElement(heights, n);//isme next smaller elements ke indexes aayenge 
 
-        vector<int> next(n);//isme next smaller elements ke indexes aayenge 
-
-        next= nextSmallerElement(heights, n);
-
-        vector<int> prev(n);
+        vector<int> prev;
         prev= prevSmallerElement(heights, n);//isme prev smaller elements ke indexes aayenge 
 
         int area= INT_MIN;
-        
-        for(int i= 0; i<n; i++){
+        for(int i= 0; i< n; i++){
+
             int l= heights[i];
-            
-            if(next[i]== -1){
+
+            if(next[i] == -1){
                 next[i]= n;
             }
-            int b= next[i]-prev[i]-1;//n-p-1
+            int b= next[i] - prev[i] -1;
 
             int newArea= l*b;
-            area= max(area, newArea);
+
+            area= max(newArea, area);
         }
-        return area;
-    }  
+        return area;   
+    }
 };
