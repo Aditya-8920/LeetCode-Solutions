@@ -2,7 +2,7 @@ name: Sync Leetcode
 on:
   workflow_dispatch:     # Allows you to run it manually
   schedule:
-    - cron: "0 8 * * 6"  # Runs automatically once a week (Every Saturday at 8:00 AM)
+    - cron: "0 8 * * *"  # Runs automatically once a week (Every Saturday at 8:00 AM)
 jobs:
   build:
     runs-on: ubuntu-latest
