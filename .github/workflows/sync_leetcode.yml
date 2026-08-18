@@ -1,18 +1,14 @@
 name: Sync Leetcode
 on:
-  workflow_dispatch:     
+  workflow_dispatch:     # Allows you to run it manually
   schedule:
-    - cron: "0 */5 * * *"  
-
+    - cron: "0 8 * * 6"  # Runs automatically once a week (Every Saturday at 8:00 AM)
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4 
-
       - name: Sync
-        uses: jasonma0011/leetcode-sync@v2.0.0  
+        uses: joshrai/leetcode-sync@v1.5
         with:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
