@@ -2,7 +2,7 @@ name: Sync Leetcode
 on:
   workflow_dispatch:     
   schedule:
-    - cron: "0 */5 * * *"  # Yeh har 5 ghante me automatic chalega
+    - cron: "0 */5 * * *"  
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4 
 
       - name: Sync
-        uses: jasonma0011/leetcode-sync@v2.0.0  # Humne yahan sahi action daal di hai
+        uses: jasonma0011/leetcode-sync@v2.0.0  
         with:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
