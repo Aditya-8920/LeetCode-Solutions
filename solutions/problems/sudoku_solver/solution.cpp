@@ -8,7 +8,7 @@ public:
         }
 
         //Check 3X3 Matrix
-        if(board[3*(row/3) + i/3][3*(col/3) + i%3] == val){//ye formula har 2X3 ke element ko represent karta hai
+        if(board[3*(row/3) + i/3][3*(col/3) + i%3] == val){//ye formula har 3X3 ke element ko represent karta hai
             return false;
         }
     }
